@@ -20,6 +20,10 @@
   --accent-ink:#F1EFE8;
   --line:#D8D4CA;
   --tint:#DDE6E0;
+  --success:#1F7A4F;
+  --success-soft:#E4F2E9;
+  --success-on-dark:#94E2B6;
+  --dash:#686D67;
 
   --font-serif:"Newsreader",Georgia,serif;
   --font-sans:"Inter",system-ui,-apple-system,sans-serif;
@@ -219,6 +223,19 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
   max-width:36em;
 }
 
+/* ---- Wyróżnik: przejrzystość ---- */
+.keydiff{
+  display:grid;gap:2rem;align-items:center;
+  margin-top:clamp(3rem, 5vw, 4.5rem);
+}
+.keydiff-lead{
+  font-size:clamp(1.05rem, .6vw + 1rem, 1.25rem);
+  line-height:1.55;color:var(--ink);max-width:32em;
+  padding-left:1.1rem;border-left:2px solid var(--accent);
+}
+.keydiff-lead strong{font-weight:600}
+.keydiff .growth-media{align-self:center}
+
 /* ---- Pakiety ---- */
 .packages{
   display:grid;gap:1.4rem;
@@ -256,7 +273,7 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
   display:flex;gap:.7rem;align-items:flex-start;
   font-size:.9rem;line-height:1.5;
 }
-.package li svg{flex:none;margin-top:.22rem;color:var(--accent)}
+.package li svg{flex:none;margin-top:.22rem;color:var(--success);stroke-width:2.7}
 .package-quote{
   margin-top:auto;
   font-family:var(--font-serif);font-style:italic;
@@ -279,21 +296,41 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
 .package-featured .package-desc,
 .package-featured .point p{color:#C4D4CB}
 .package-featured .package-desc strong{color:var(--accent-ink)}
-.package-featured li svg{color:#8FB8A3}
+.package-featured li svg{color:var(--success-on-dark);stroke-width:2.7}
 .package-featured .package-quote{border-top-color:rgba(241,239,232,.22);color:var(--accent-ink)}
 .packages-note{
   margin-top:1.6rem;font-size:.82rem;color:var(--muted);
 }
 
+/* ---- Krótkie wsparcie bezpośrednio pod pakietami ---- */
+.assurance-inline{
+  display:grid;gap:1.5rem;align-items:center;
+  margin-top:clamp(2.5rem, 4vw, 4rem);
+  padding:clamp(1.5rem, 3vw, 2.25rem);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:var(--surface);
+}
+.assurance-inline .eyebrow{margin-bottom:.8rem}
+.assurance-inline h3{
+  font-family:var(--font-serif);font-weight:500;
+  font-size:clamp(1.3rem, 1.2vw + 1rem, 1.65rem);
+  line-height:1.2;letter-spacing:-.01em;
+}
+.assurance-inline-list{list-style:none;display:grid;gap:.75rem}
+.assurance-inline-list li{display:flex;gap:.7rem;align-items:flex-start;font-size:.9rem;line-height:1.5}
+.assurance-inline-list svg{flex:none;margin-top:.2rem;color:var(--success);stroke-width:2.7}
+
 /* ---- Tabela porównawcza ---- */
-.compare{margin-top:clamp(4rem, 6vw, 6rem)}
+.compare{min-width:0;margin-top:clamp(4rem, 6vw, 6rem)}
 .compare-title{
   font-family:var(--font-serif);font-weight:500;font-size:1.35rem;
   margin-bottom:.5rem;letter-spacing:-0.01em;
 }
 .compare-hint{font-size:.82rem;color:var(--muted);margin-bottom:1.5rem}
 .compare-scroll{
-  overflow-x:auto;
+  width:100%;max-width:100%;overflow-x:auto;
+  contain:inline-size paint;
   border:1px solid var(--line);
   border-radius:var(--radius);
   background:var(--surface);
@@ -330,8 +367,10 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
 .compare thead .col-featured{color:var(--accent)}
 .compare thead .col-featured .th-price{color:var(--accent);font-weight:600}
 .compare td svg{margin-inline:auto}
-.compare .yes svg{color:var(--accent)}
-.compare .no{color:#B8B3A6;font-size:1.4rem;line-height:1}
+.compare .yes svg{color:var(--success);stroke-width:2.8}
+.compare .no{color:var(--dash);font-size:1.15rem;font-weight:600;line-height:1}
+.compare .no > span[aria-hidden="true"]{font-size:0}
+.compare .no > span[aria-hidden="true"]::before{content:"—";font-size:1.15rem}
 
 /* ---- Mapa (w cenie pakietu 3) ---- */
 .mapsec-inner{
@@ -355,29 +394,41 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
   display:flex;gap:.7rem;align-items:flex-start;
   font-size:.93rem;line-height:1.5;
 }
-.mapsec li svg{flex:none;margin-top:.22rem;color:var(--accent)}
+.mapsec li svg{flex:none;margin-top:.22rem;color:var(--success);stroke-width:2.7}
 .map-figure{
-  overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);
+  position:relative;overflow:hidden;
+  aspect-ratio:1568/1003;
+  border:1px solid var(--line);border-radius:var(--radius);
   background:#EEF1EB;
 }
-.map-figure svg{display:block;width:100%;height:auto}
-
-/* ---- Wsparcie po wdrożeniu ---- */
-.assurance-inner{
-  display:grid;gap:2.5rem;align-items:center;
-  border:1px solid var(--line);
-  border-radius:var(--radius);
-  background:var(--surface);
-  padding:clamp(1.75rem, 4vw, 3rem);
+.map-figure > img{display:block;width:100%;height:100%;object-fit:cover}
+.map-pin{
+  position:absolute;z-index:2;
+  width:clamp(2.75rem, 5vw, 3.75rem);aspect-ratio:1;
+  transform:translate(-50%,-50%);
+  border:2px solid transparent;border-radius:50%;
+  background:transparent;cursor:pointer;
+  transition:border-color var(--t-fast) var(--ease),box-shadow var(--t-fast) var(--ease),background-color var(--t-fast) var(--ease);
 }
-.assurance .eyebrow{margin-bottom:1.2rem}
-.assurance h2{font-size:clamp(1.5rem, 2.2vw + .9rem, 2.35rem);margin-bottom:1rem}
-.assurance .lead{margin-bottom:0}
-.assurance-list{list-style:none;display:grid;gap:1.4rem}
-.assurance-item{display:flex;gap:1rem;align-items:flex-start}
-.assurance-item svg{flex:none;margin-top:.15rem;color:var(--accent)}
-.assurance-item h3{font-size:1rem;font-weight:600;margin-bottom:.25rem;letter-spacing:-0.01em}
-.assurance-item p{font-size:.9rem;color:var(--muted);line-height:1.5}
+.map-pin:hover,.map-pin:focus-visible{
+  border-color:rgba(255,255,255,.95);
+  background:rgba(255,255,255,.08);
+  box-shadow:0 0 0 4px rgba(36,76,61,.35);
+}
+.map-pin.is-active{border-color:#fff;box-shadow:0 0 0 4px rgba(36,76,61,.55)}
+.map-pin-1{left:23%;top:70%}
+.map-pin-2{left:48%;top:44%}
+.map-pin-3{left:75%;top:16.5%}
+.map-caption{
+  position:absolute;z-index:2;left:.8rem;bottom:.8rem;
+  max-width:min(24rem,calc(100% - 1.6rem));
+  padding:.55rem .75rem;
+  border:1px solid rgba(216,212,202,.9);border-radius:var(--radius);
+  background:rgba(252,251,248,.94);color:var(--ink);
+  box-shadow:0 8px 24px rgba(23,26,24,.12);
+  font-size:.73rem;line-height:1.4;
+  backdrop-filter:blur(6px);
+}
 
 /* ---- Rozwój ---- */
 .growth{display:grid;gap:0;margin-top:clamp(3rem, 5vw, 4.5rem)}
@@ -412,10 +463,12 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
   font-size:.88rem;line-height:1.5;color:var(--ink);
 }
 .growth-list li::before{
-  content:"";flex:none;
-  width:.4rem;height:.4rem;border-radius:50%;
-  background:var(--tint);border:1px solid var(--accent);
-  margin-top:.42rem;
+  content:"✓";flex:none;
+  display:grid;place-items:center;
+  width:1.15rem;height:1.15rem;border-radius:50%;
+  background:var(--success-soft);color:var(--success);
+  font-size:.73rem;font-weight:700;line-height:1;
+  margin-top:.12rem;
 }
 .growth-note{margin-top:1.75rem;font-size:.82rem;color:var(--muted);max-width:40em}
 
@@ -496,6 +549,7 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
   .hero-grid{grid-template-columns:1.05fr .9fr;gap:4.5rem}
   .hero-frame img{aspect-ratio:4/5}
   .mapsec-inner{grid-template-columns:.95fr 1.05fr;gap:3.5rem}
+  .keydiff{grid-template-columns:1fr 1fr;gap:3.5rem}
   .packages{grid-template-columns:repeat(3, 1fr);align-items:stretch}
   .package h3{min-height:2.4em;display:flex;align-items:flex-end}
   .package-desc{min-height:7.5em}
@@ -504,7 +558,7 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
     padding-block:calc(clamp(1.75rem, 3vw, 2.5rem) + 1.75rem);
   }
   .growth-row{grid-template-columns:4rem 1.2fr .8fr;gap:2.5rem;align-items:start}
-  .assurance-inner{grid-template-columns:1fr 1fr;gap:4rem}
+  .assurance-inline{grid-template-columns:.9fr 1.1fr;gap:3rem}
   .contact-inner{grid-template-columns:1.1fr .9fr;gap:5rem}
   .contact-box{text-align:left}
   .contact-box .btn{margin-inline:0}
@@ -588,9 +642,12 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
         </div>
       </div>
 
-      <figure class="section-visual reveal">
-        <img src="assets/images/panorama-architectural-model.webp" width="1915" height="821" alt="Fizyczna makieta osiedla mieszkaniowego na stole pracowni architektonicznej" loading="lazy" decoding="async">
-      </figure>
+      <div class="keydiff reveal">
+        <p class="keydiff-lead">Najłatwiej wyróżnić się nad konkurencją <strong>szybkim i&nbsp;przejrzystym dostępem do informacji</strong>. U&nbsp;większości deweloperów strony są rozbudowane i&nbsp;trudno znaleźć na nich to, co naprawdę ważne.</p>
+        <figure class="growth-media">
+          <img src="assets/images/kluczowe-przejrzystosc.webp" width="1448" height="1086" alt="Porównanie przejrzystej strony dewelopera z rozbudowaną, trudną w nawigacji stroną konkurencji" loading="lazy" decoding="async">
+        </figure>
+      </div>
 
       <p class="bridge reveal">Wybór wariantu nie dotyczy liczby ekranów. Dotyczy tego, ile z&nbsp;tych pytań strona ma rozwiązywać za firmę.</p>
     </div>
@@ -676,6 +733,18 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
       </div>
 
       <p class="packages-note reveal">Podane kwoty są cenami netto. Wybór pakietu rozpoczyna rozmowę, nie jest zamówieniem ani zobowiązaniem.</p>
+
+      <aside class="assurance-inline reveal" id="wsparcie" aria-labelledby="wsparcie-title">
+        <div>
+          <p class="eyebrow">Wsparcie po starcie</p>
+          <h3 id="wsparcie-title">Dwa tygodnie opieki w&nbsp;cenie każdego pakietu.</h3>
+        </div>
+        <ul class="assurance-inline-list">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Poprawki treści i&nbsp;zdjęć</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Odpowiedzi dla zespołu</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kontrola działania po publikacji</li>
+        </ul>
+      </aside>
 
       <!-- Tabela porównawcza -->
       <div class="compare reveal">
@@ -815,68 +884,11 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
         </div>
 
         <figure class="map-figure">
-          <svg viewBox="0 0 640 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Poglądowa mapa okolicy z zaznaczonymi trzema inwestycjami oraz pobliskimi szkołami, parkami, przystankami i sklepami">
-            <rect width="640" height="460" fill="#EEF1EB"/>
-            <!-- park -->
-            <rect x="40" y="250" width="180" height="150" rx="6" fill="#D3E2D5"/>
-            <rect x="430" y="40" width="170" height="120" rx="6" fill="#D3E2D5"/>
-            <!-- woda / rzeka -->
-            <path d="M0 120 C120 150 180 90 320 130 C460 170 520 110 640 150 L640 200 C520 165 460 220 320 180 C180 140 120 205 0 175 Z" fill="#CBDCDD"/>
-            <!-- kwartały zabudowy -->
-            <g fill="#E4E1D6">
-              <rect x="250" y="220" width="110" height="90" rx="4"/>
-              <rect x="380" y="210" width="90" height="70" rx="4"/>
-              <rect x="250" y="330" width="130" height="80" rx="4"/>
-              <rect x="410" y="300" width="120" height="110" rx="4"/>
-              <rect x="80" y="60" width="120" height="55" rx="4"/>
-            </g>
-            <!-- ulice -->
-            <g stroke="#D8D4CA" stroke-width="10" stroke-linecap="round">
-              <line x1="230" y1="0" x2="230" y2="460"/>
-              <line x1="395" y1="0" x2="395" y2="460"/>
-              <line x1="0" y1="205" x2="640" y2="205"/>
-              <line x1="0" y1="290" x2="640" y2="290"/>
-            </g>
-            <g stroke="#E6E2D8" stroke-width="4" stroke-linecap="round">
-              <line x1="230" y1="0" x2="230" y2="460"/>
-              <line x1="395" y1="0" x2="395" y2="460"/>
-              <line x1="0" y1="205" x2="640" y2="205"/>
-              <line x1="0" y1="290" x2="640" y2="290"/>
-            </g>
-
-            <!-- udogodnienia w pobliżu -->
-            <g font-family="Inter, sans-serif" font-size="13" fill="#5D635C">
-              <circle cx="120" cy="325" r="7" fill="#8FA394"/>
-              <text x="134" y="330">Park</text>
-              <circle cx="470" cy="95" r="7" fill="#8FA394"/>
-              <text x="484" y="100">Park</text>
-              <circle cx="300" cy="360" r="7" fill="#B9A16B"/>
-              <text x="314" y="365">Szkoła</text>
-              <circle cx="150" cy="230" r="7" fill="#7E9BB0"/>
-              <text x="164" y="235">Przystanek</text>
-              <circle cx="470" cy="340" r="7" fill="#C08A72"/>
-              <text x="484" y="345">Sklep</text>
-            </g>
-
-            <!-- piny inwestycji -->
-            <g>
-              <g transform="translate(300 250)">
-                <path d="M0 6 C-16 6 -26 -6 -26 -20 A26 26 0 0 1 26 -20 C26 -6 16 6 0 6 Z" fill="#244C3D"/>
-                <circle cx="0" cy="-20" r="9" fill="#F5F3EE"/>
-                <text x="0" y="-15" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#244C3D">1</text>
-              </g>
-              <g transform="translate(450 250)">
-                <path d="M0 6 C-16 6 -26 -6 -26 -20 A26 26 0 0 1 26 -20 C26 -6 16 6 0 6 Z" fill="#244C3D"/>
-                <circle cx="0" cy="-20" r="9" fill="#F5F3EE"/>
-                <text x="0" y="-15" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#244C3D">2</text>
-              </g>
-              <g transform="translate(190 150)">
-                <path d="M0 6 C-16 6 -26 -6 -26 -20 A26 26 0 0 1 26 -20 C26 -6 16 6 0 6 Z" fill="#244C3D"/>
-                <circle cx="0" cy="-20" r="9" fill="#F5F3EE"/>
-                <text x="0" y="-15" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#244C3D">3</text>
-              </g>
-            </g>
-          </svg>
+          <img src="assets/images/investment-map-3d.webp" width="1568" height="1003" alt="Poglądowa, lekko trójwymiarowa mapa miasta z obrysami trzech inwestycji oraz trasami do parku, szkoły, transportu i usług" loading="lazy" decoding="async">
+          <button class="map-pin map-pin-1 is-active" type="button" data-map-investment="01" aria-pressed="true" aria-describedby="map-caption"><span class="sr-only">Pokaż inwestycję 01</span></button>
+          <button class="map-pin map-pin-2" type="button" data-map-investment="02" aria-pressed="false" aria-describedby="map-caption"><span class="sr-only">Pokaż inwestycję 02</span></button>
+          <button class="map-pin map-pin-3" type="button" data-map-investment="03" aria-pressed="false" aria-describedby="map-caption"><span class="sr-only">Pokaż inwestycję 03</span></button>
+          <figcaption class="map-caption" id="map-caption" aria-live="polite">Inwestycja 01 · przykładowe trasy</figcaption>
         </figure>
       </div>
     </div>
@@ -951,42 +963,6 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
     </div>
   </section>
 
-  <!-- ============ WSPARCIE PO WDROŻENIU ============ -->
-  <section class="section assurance" id="wsparcie">
-    <div class="container">
-      <div class="assurance-inner reveal">
-        <div>
-          <p class="eyebrow">Po uruchomieniu, w&nbsp;cenie każdego pakietu</p>
-          <h2>Nie zostawiamy Was z&nbsp;gotową stroną samych.</h2>
-          <p class="lead">Przez dwa tygodnie od uruchomienia strona pozostaje pod naszą opieką. Spokojnie nanosimy poprawki, dopinamy szczegóły i&nbsp;jesteśmy dostępni na Wasze pytania. To część każdego wariantu, bez dodatkowych kosztów.</p>
-        </div>
-        <ul class="assurance-list">
-          <li class="assurance-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-            <div>
-              <h3>Dwa tygodnie opieki</h3>
-              <p>Pełne wsparcie od pierwszego dnia po uruchomieniu, gdy strona zaczyna żyć naprawdę.</p>
-            </div>
-          </li>
-          <li class="assurance-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg>
-            <div>
-              <h3>Regularne poprawki</h3>
-              <p>Drobne zmiany w&nbsp;treści, zdjęciach i&nbsp;szczegółach nanosimy na bieżąco.</p>
-            </div>
-          </li>
-          <li class="assurance-item">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            <div>
-              <h3>Konsultacje i&nbsp;pytania</h3>
-              <p>Jesteśmy pod telefonem, żeby doradzić i&nbsp;wspólnie ustawić kolejne kroki.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ KONTAKT ============ -->
   <section class="section contact" id="kontakt">
     <div class="container contact-inner">
@@ -1034,6 +1010,20 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
   }else{
     items.forEach(function(el){ el.classList.add('is-visible'); });
   }
+
+  // Prosty wybór inwestycji na poglądowej mapie
+  var mapCaption = document.getElementById('map-caption');
+  document.querySelectorAll('[data-map-investment]').forEach(function(pin){
+    pin.addEventListener('click', function(){
+      document.querySelectorAll('[data-map-investment]').forEach(function(item){
+        item.classList.remove('is-active');
+        item.setAttribute('aria-pressed','false');
+      });
+      pin.classList.add('is-active');
+      pin.setAttribute('aria-pressed','true');
+      mapCaption.textContent = 'Inwestycja ' + pin.getAttribute('data-map-investment') + ' · przykładowe trasy';
+    });
+  });
 
   // Wybrany pakiet widoczny przy kontakcie
   var selected = document.getElementById('wybrany-pakiet');

@@ -21,3 +21,11 @@ Fotorealistyczne zdjęcie prawdziwego stanowiska architektonicznego z monitorem 
 ## Aplikacja zarządcza 3D — `growth-management-mobile-3d`
 
 Realistyczna przestrzenna makieta aplikacji mobilnej do zarządzania inwestycjami. Jeden grafitowy telefon w lekkim ujęciu trzy czwarte; na ekranie projekty, lokale, statusy i zapytania, a kilka kart UI delikatnie wystaje ponad szkło: budynek, lista lokali, plan mieszkania i karta zapytania. Kadr 4:3, ciepłe tło w kolorze kości słoniowej, głęboka zieleń i miękki cień kontaktowy. Bez ludzi, twarzy, logotypów, neonów, hologramów, złotych akcentów i czytelnego pseudo-tekstu.
+
+## Interaktywna mapa inwestycji — `investment-map-3d`
+
+Poglądowa, delikatnie trójwymiarowa mapa współczesnej dzielnicy środkowoeuropejskiego miasta, przygotowana jako element strony dewelopera. Trzy obrysy inwestycji oznaczone numerami 01, 02 i 03 w głębokiej zieleni; czytelne trasy prowadzą do parku, szkoły, transportu publicznego, lokalnych usług i kierunku centrum. Kadr poziomy 16:10, realistyczna skala zabudowy, spokojne naturalne światło, paleta kości słoniowej, zieleni i przygaszonego błękitu. Bez ludzi, adresów, nazw własnych, logotypów, pseudo-tekstu, wyglądu gry i przesadnie plastikowego CGI.
+
+## Jak wyróżnić się przejrzystością — `kluczowe-przejrzystosc`
+
+Naturalne, redakcyjne zdjęcie stanowiska pracy pokazujące przewagę przejrzystej strony dewelopera. Na pierwszym planie tablet z prostym układem: jedno mocne zdjęcie architektury, cztery uporządkowane bloki informacji oraz wyraźna droga do wyszukania oferty i kontaktu. W tle dwa bardziej zagęszczone, lekko rozmyte układy konkurencji. Kadr 4:3, miękkie światło dzienne, realistyczne materiały biurka, paleta kości słoniowej i głębokiej zieleni. Bez ludzi, dłoni, twarzy, logotypów, czytelnego pseudo-tekstu, podium, pucharów, neonów, hologramów i unoszącego się interfejsu.

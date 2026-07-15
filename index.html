@@ -158,6 +158,9 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
 .hero{
   padding-top:clamp(6.5rem, 12vw, 10rem);
   padding-bottom:var(--space-section);
+  background:
+    radial-gradient(55% 45% at 88% 4%, #EDE5D4 0%, transparent 62%),
+    radial-gradient(40% 35% at 0% 90%, #E3EAE3 0%, transparent 60%);
 }
 .hero-grid{display:grid;gap:3.5rem;align-items:center}
 .hero .eyebrow{margin-bottom:1.6rem}
@@ -289,6 +292,12 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
 .package-featured .package-desc strong{color:var(--accent-ink)}
 .package-featured li svg{color:#8FB8A3}
 .package-featured .package-quote{border-top-color:rgba(241,239,232,.22);color:var(--accent-ink)}
+.package-featured .ph{
+  background:linear-gradient(150deg, rgba(241,239,232,.10) 0%, rgba(221,230,224,.14) 100%);
+  border-color:rgba(241,239,232,.35);
+  color:#A9C3B6;
+}
+.package-featured .ph::after{background:radial-gradient(80% 90% at 20% 0%, rgba(241,239,232,.12) 0%, transparent 55%)}
 
 .packages-note{
   margin-top:1.6rem;font-size:.82rem;color:var(--muted);
@@ -354,13 +363,22 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
   font-family:var(--font-serif);font-style:italic;font-size:1.05rem;
   color:var(--accent);font-variant-numeric:tabular-nums;
 }
+.growth-tag{
+  display:inline-block;
+  font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);
+  background:var(--tint);
+  border-radius:2px;
+  padding:.3rem .65rem;
+  margin-bottom:1rem;
+}
 .growth-main h3{
   font-family:var(--font-serif);font-weight:500;
   font-size:clamp(1.3rem, 1.4vw + .9rem, 1.65rem);
   letter-spacing:-0.01em;margin-bottom:.7rem;
 }
 .growth-main > p{color:var(--muted);font-size:.95rem;max-width:36em}
-.growth-list{list-style:none;display:grid;gap:.65rem;align-content:start}
+.growth-list{list-style:none;display:grid;gap:.65rem;align-content:start;margin-top:1.5rem}
 .growth-list li{
   display:flex;gap:.65rem;align-items:flex-start;
   font-size:.88rem;line-height:1.5;color:var(--ink);
@@ -453,7 +471,7 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
     transform:translateY(-1.75rem);
     padding-block:calc(clamp(1.75rem, 3vw, 2.5rem) + 1.75rem);
   }
-  .growth-row{grid-template-columns:4rem 1.2fr 1fr;gap:2.5rem}
+  .growth-row{grid-template-columns:4rem 1.2fr .8fr;gap:2.5rem;align-items:start}
   .contact-inner{grid-template-columns:1.1fr .9fr;gap:5rem}
   .contact-box{text-align:left}
   .contact-box .btn{margin-inline:0}
@@ -493,35 +511,11 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
 
       <figure class="hero-figure reveal" style="--reveal-delay:200ms" aria-hidden="true">
         <div class="hero-frame">
-          <svg viewBox="0 0 520 560" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstrakcyjny rysunek elewacji współczesnego budynku">
-            <rect width="520" height="560" fill="#F0EEE7"/>
-            <!-- światło na elewacji -->
-            <path d="M0 560 L520 90 L520 560 Z" fill="#E7EBE6"/>
-            <path d="M120 560 L520 240 L520 560 Z" fill="#DDE6E0" opacity=".7"/>
-            <!-- bryła główna -->
-            <rect x="88" y="120" width="212" height="440" fill="#FCFBF8" stroke="#D8D4CA"/>
-            <rect x="300" y="40" width="140" height="520" fill="#F5F3EE" stroke="#D8D4CA"/>
-            <!-- podziały pięter -->
-            <g stroke="#D8D4CA" stroke-width="1">
-              <line x1="88" y1="190" x2="300" y2="190"/><line x1="88" y1="260" x2="300" y2="260"/>
-              <line x1="88" y1="330" x2="300" y2="330"/><line x1="88" y1="400" x2="300" y2="400"/>
-              <line x1="88" y1="470" x2="300" y2="470"/>
-              <line x1="300" y1="120" x2="440" y2="120"/><line x1="300" y1="200" x2="440" y2="200"/>
-              <line x1="300" y1="280" x2="440" y2="280"/><line x1="300" y1="360" x2="440" y2="360"/>
-              <line x1="300" y1="440" x2="440" y2="440"/>
-            </g>
-            <!-- pionowe podziały okien -->
-            <g stroke="#E4E1D7" stroke-width="1">
-              <line x1="141" y1="120" x2="141" y2="560"/><line x1="194" y1="120" x2="194" y2="560"/>
-              <line x1="247" y1="120" x2="247" y2="560"/>
-              <line x1="347" y1="40" x2="347" y2="560"/><line x1="394" y1="40" x2="394" y2="560"/>
-            </g>
-            <!-- akcenty zieleni -->
-            <rect x="300" y="280" width="47" height="80" fill="#244C3D" opacity=".9"/>
-            <rect x="194" y="330" width="53" height="70" fill="#DDE6E0"/>
-            <!-- linia horyzontu -->
-            <line x1="0" y1="560" x2="520" y2="560" stroke="#D8D4CA"/>
-          </svg>
+          <div class="ph ph-tall">
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-4.35-4.35a1 1 0 0 0-1.42 0L6 20"/></svg>
+            <span class="ph-label">Kadr architektoniczny</span>
+            <span class="ph-hint">Miejsce na zdjęcie detalu elewacji, światła na materiale lub wizualizację pierwszej inwestycji.</span>
+          </div>
         </div>
         <figcaption class="hero-card">
           <p class="hero-card-label">Rola strony</p>
@@ -565,6 +559,12 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
         </div>
       </div>
 
+      <div class="ph ph-wide reveal" style="margin-top:clamp(3rem, 5vw, 4.5rem)">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-4.35-4.35a1 1 0 0 0-1.42 0L6 20"/></svg>
+        <span class="ph-label">Szeroki kadr nastrojowy</span>
+        <span class="ph-hint">Miejsce na panoramiczne zdjęcie: wnętrze z naturalnym światłem, osiedle o zmierzchu lub makieta architektoniczna.</span>
+      </div>
+
       <p class="bridge reveal">Wybór wariantu nie dotyczy liczby ekranów. Dotyczy tego, ile z&nbsp;tych pytań strona ma rozwiązywać za firmę.</p>
     </div>
   </section>
@@ -582,6 +582,10 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
 
         <!-- Pakiet 1 -->
         <article class="package reveal">
+          <div class="ph ph-thumb">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="1"/><line x1="2" y1="9" x2="22" y2="9"/><circle cx="5.5" cy="6.5" r=".5"/></svg>
+            <span class="ph-label">Makieta ekranu — wizytówka marki</span>
+          </div>
           <p class="package-label">01 / Obecność</p>
           <h3>Wiarygodny start</h3>
           <p class="package-price">7 500 zł <small>netto</small></p>
@@ -600,6 +604,10 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
 
         <!-- Pakiet 2 -->
         <article class="package reveal" style="--reveal-delay:100ms">
+          <div class="ph ph-thumb">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="1"/><line x1="2" y1="9" x2="22" y2="9"/><rect x="5" y="12" width="6" height="5"/><rect x="13" y="12" width="6" height="5"/></svg>
+            <span class="ph-label">Makieta ekranu — portfolio inwestycji</span>
+          </div>
           <p class="package-label">02 / Portfolio</p>
           <h3>Marka i&nbsp;inwestycje</h3>
           <p class="package-price">12 000 zł <small>netto</small></p>
@@ -618,6 +626,10 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
 
         <!-- Pakiet 3 -->
         <article class="package package-featured reveal" style="--reveal-delay:200ms">
+          <div class="ph ph-thumb">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="1"/><line x1="2" y1="9" x2="22" y2="9"/><circle cx="8" cy="14.5" r="2.2"/><path d="m9.7 16.2 2.3 2.3"/><line x1="14.5" y1="13" x2="19" y2="13"/><line x1="14.5" y1="16" x2="19" y2="16"/></svg>
+            <span class="ph-label">Makieta ekranu — wyszukiwarka mieszkań</span>
+          </div>
           <p class="package-label">03 / Sprzedaż</p>
           <h3>Cyfrowe biuro sprzedaży</h3>
           <p class="package-price">15 000 zł <small>netto</small></p>
@@ -732,50 +744,68 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
       <div class="section-head">
         <p class="eyebrow reveal">Możliwości dalszego rozwoju</p>
         <h2 class="reveal" style="--reveal-delay:60ms">Kiedy strona zaczyna sprzedawać, może przejąć kolejne zadania.</h2>
-        <p class="lead reveal" style="--reveal-delay:120ms">Poniższe rozwiązania nie są kolejnymi dodatkami do strony. To osobne kierunki rozwoju, które mogą poprawić doświadczenie kupującego i&nbsp;uporządkować pracę zespołu.</p>
+        <p class="lead reveal" style="--reveal-delay:120ms">To nie są dodatki do strony, lecz trzy osobne kierunki rozwoju: doradca AI dla klientów, wirtualne spacery 3D oraz aplikacja porządkująca pracę całego zespołu.</p>
       </div>
 
       <div class="growth">
         <div class="growth-row reveal">
           <span class="growth-num">I.</span>
           <div class="growth-main">
-            <h3>Doradca, który pomaga znaleźć właściwe mieszkanie</h3>
-            <p>Klient opowiada o&nbsp;budżecie, stylu życia, dojazdach i&nbsp;tym, czego naprawdę potrzebuje. Doradca pomaga zawęzić wybór, wyjaśnia różnice między lokalami i&nbsp;przekazuje handlowcowi kontekst rozmowy.</p>
+            <span class="growth-tag">Sztuczna inteligencja</span>
+            <h3>Prywatny doradca AI, który pomaga znaleźć właściwe mieszkanie</h3>
+            <p>Inteligentny doradca dostępny bezpośrednio na stronie. Klient opowiada mu o&nbsp;budżecie, stylu życia, dojazdach i&nbsp;tym, czego naprawdę potrzebuje — a&nbsp;doradca zawęża wybór, wyjaśnia różnice między lokalami i&nbsp;przekazuje handlowcowi kontekst rozmowy.</p>
+            <ul class="growth-list">
+              <li>Pomoc dostępna również poza godzinami biura</li>
+              <li>Krótsza lista lepiej dopasowanych mieszkań</li>
+              <li>Spokojne wyjaśnienie różnic bez przeglądania dziesiątek kart</li>
+              <li>Handlowiec rozpoczyna rozmowę ze znajomością potrzeb klienta</li>
+            </ul>
           </div>
-          <ul class="growth-list">
-            <li>Pomoc dostępna również poza godzinami biura</li>
-            <li>Krótsza lista lepiej dopasowanych mieszkań</li>
-            <li>Spokojne wyjaśnienie różnic bez przeglądania dziesiątek kart</li>
-            <li>Handlowiec rozpoczyna rozmowę ze znajomością potrzeb klienta</li>
-          </ul>
+          <div class="ph ph-media">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 8.5-8.5 8.38 8.38 0 0 1 8.5 8.5z"/><path d="M9 10h.01M12.5 10h.01M16 10h.01"/></svg>
+            <span class="ph-label">Ilustracja — rozmowa z&nbsp;doradcą AI</span>
+            <span class="ph-hint">Np. makieta okna rozmowy z&nbsp;propozycjami mieszkań.</span>
+          </div>
         </div>
 
         <div class="growth-row reveal">
           <span class="growth-num">II.</span>
           <div class="growth-main">
-            <h3>Zobacz przestrzeń, zanim powstanie</h3>
-            <p>Wirtualny spacer, rzut 3D lub interaktywna bryła pomagają zrozumieć układ, światło i&nbsp;położenie mieszkania bez wizyty na budowie.</p>
+            <span class="growth-tag">Wirtualne spacery i&nbsp;3D</span>
+            <h3>Wirtualny spacer — zobacz przestrzeń, zanim powstanie</h3>
+            <p>Wirtualne spacery po mieszkaniach, rzuty 3D i&nbsp;interaktywna bryła budynku pozwalają zrozumieć układ, światło i&nbsp;położenie mieszkania bez wizyty na budowie.</p>
+            <ul class="growth-list">
+              <li>Łatwiejsze wyobrażenie sobie codziennego życia w&nbsp;mieszkaniu</li>
+              <li>Możliwość poznania inwestycji z&nbsp;dowolnego miejsca</li>
+              <li>Mocniejsza prezentacja lokali sprzedawanych przed zakończeniem budowy</li>
+              <li>Materiały przydatne również handlowcom i&nbsp;kampaniom reklamowym</li>
+            </ul>
           </div>
-          <ul class="growth-list">
-            <li>Łatwiejsze wyobrażenie sobie codziennego życia w&nbsp;mieszkaniu</li>
-            <li>Możliwość poznania inwestycji z&nbsp;dowolnego miejsca</li>
-            <li>Mocniejsza prezentacja lokali sprzedawanych przed zakończeniem budowy</li>
-            <li>Materiały przydatne również handlowcom i&nbsp;kampaniom reklamowym</li>
-          </ul>
+          <div class="ph ph-media">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16.5v-9L12 3 3 7.5v9L12 21l9-4.5z"/><path d="M3 7.5 12 12l9-4.5"/><path d="M12 12v9"/></svg>
+            <span class="ph-label">Ilustracja — spacer 3D</span>
+            <span class="ph-hint">Np. kadr z&nbsp;wirtualnego spaceru lub rzut mieszkania 3D.</span>
+          </div>
         </div>
 
         <div class="growth-row reveal">
           <span class="growth-num">III.</span>
           <div class="growth-main">
-            <h3>Jedno miejsce zamiast wielu rozproszonych narzędzi</h3>
-            <p>Oferta, ceny, dostępność i&nbsp;zapytania mogą być porządkowane w&nbsp;jednym miejscu. Zmiana wykonana raz trafia tam, gdzie jest potrzebna, a&nbsp;zespół nie musi przenosić informacji ręcznie.</p>
+            <span class="growth-tag">Aplikacja do zarządzania biznesem</span>
+            <h3>Jedna aplikacja, która łączy stronę z&nbsp;całym biznesem</h3>
+            <p>Aplikacja zarządcza dla zespołu: oferta, ceny, dostępność i&nbsp;zapytania są porządkowane w&nbsp;jednym miejscu. Zmiana wykonana raz trafia tam, gdzie jest potrzebna — na stronę i&nbsp;do handlowców — a&nbsp;zespół nie musi przenosić informacji ręcznie.</p>
+            <ul class="growth-list">
+              <li>Mniej powtarzalnej pracy i&nbsp;realna oszczędność czasu</li>
+              <li>Mniejsze ryzyko różnych cen lub statusów w&nbsp;kilku miejscach</li>
+              <li>Zapytania trafiają do właściwej osoby z&nbsp;pełnym kontekstem</li>
+              <li>Mniej chaosu wraz ze wzrostem liczby lokali i&nbsp;projektów</li>
+            </ul>
           </div>
-          <ul class="growth-list">
-            <li>Mniej powtarzalnej pracy</li>
-            <li>Mniejsze ryzyko różnych cen lub statusów w&nbsp;kilku miejscach</li>
-            <li>Zapytania trafiają do właściwej osoby z&nbsp;pełnym kontekstem</li>
-            <li>Mniej chaosu wraz ze wzrostem liczby lokali i&nbsp;projektów</li>
-          </ul>
+          <div class="ph ph-media">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="21"/><line x1="12" y1="13" x2="18" y2="13"/><line x1="12" y1="17" x2="18" y2="17"/></svg>
+            <span class="ph-label">Ilustracja — panel aplikacji</span>
+            <span class="ph-hint">Np. makieta panelu z&nbsp;listą lokali i&nbsp;zapytań.</span>
+          </div>
         </div>
       </div>
 

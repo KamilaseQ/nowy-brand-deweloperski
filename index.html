@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strona, która rośnie razem z marką — oferta cyfrowego startu marki deweloperskiej</title>
+<meta name="description" content="Trzy warianty strony dla nowej marki deweloperskiej: wiarygodna obecność, portfolio inwestycji i cyfrowe biuro sprzedaży. Od 7 500 zł.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23244C3D'/%3E%3Crect x='9' y='11' width='5' height='12' fill='%23F5F3EE'/%3E%3Crect x='18' y='7' width='5' height='16' fill='%23DDE6E0'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ Tokens ============ */
+:root{
+  --bg:#F5F3EE;
+  --surface:#FCFBF8;
+  --ink:#171A18;
+  --muted:#5D635C;
+  --accent:#244C3D;
+  --accent-ink:#F1EFE8;
+  --line:#D8D4CA;
+  --tint:#DDE6E0;
+
+  --font-serif:"Newsreader",Georgia,serif;
+  --font-sans:"Inter",system-ui,-apple-system,sans-serif;
+
+  --w-content:1220px;
+  --space-section:clamp(5.5rem, 6vw + 3rem, 11rem);
+  --radius:2px;
+  --t-fast:200ms;
+  --t-med:260ms;
+  --ease:cubic-bezier(.33,1,.68,1);
+}
+
+/* ============ Reset / base ============ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-sans);
+  font-size:1rem;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:clip;
+}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:var(--radius)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.container{
+  width:min(100% - 2.75rem, var(--w-content));
+  margin-inline:auto;
+}
+
+/* ============ Typography ============ */
+h1,h2{
+  font-family:var(--font-serif);
+  font-weight:500;
+  letter-spacing:-0.015em;
+  line-height:1.14;
+  text-wrap:balance;
+}
+h1{font-size:clamp(1.85rem, 3.1vw + 1rem, 3rem)}
+h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.65rem;
+  font-size:.75rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);
+}
+.eyebrow::before{content:"";width:1.75rem;height:1px;background:var(--accent);flex:none}
+.lead{
+  color:var(--muted);
+  font-size:clamp(1.02rem, .4vw + .95rem, 1.15rem);
+  max-width:34em;
+}
+.section-head{max-width:46em}
+.section-head .eyebrow{margin-bottom:1.4rem}
+.section-head h2{margin-bottom:1.2rem}
+
+/* ============ Buttons ============ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  min-height:3rem;padding:.85rem 1.9rem;
+  font:inherit;font-weight:500;font-size:.95rem;
+  text-decoration:none;cursor:pointer;
+  border:1px solid transparent;border-radius:var(--radius);
+  transition:background-color var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease),color var(--t-fast) var(--ease),transform var(--t-fast) var(--ease);
+}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{background:#1B3A2F}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn-light{background:var(--accent-ink);color:var(--accent)}
+.btn-light:hover{background:#fff}
+.btn svg{flex:none}
+
+/* ============ Placeholdery graficzne ============ */
+.ph{
+  position:relative;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;
+  background:linear-gradient(150deg, #F0E9DB 0%, #E9E8DC 45%, #DCE5DE 100%);
+  border:1px dashed #C6C0AF;
+  border-radius:var(--radius);
+  color:#8B8677;
+  text-align:center;
+  padding:1.25rem;
+  overflow:hidden;
+}
+.ph::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(80% 90% at 20% 0%, rgba(255,255,255,.55) 0%, transparent 55%);
+}
+.ph svg{opacity:.7;position:relative;z-index:1}
+.ph-label{
+  position:relative;z-index:1;
+  font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+}
+.ph-hint{position:relative;z-index:1;font-size:.78rem;line-height:1.5;color:#9C9686;max-width:24em}
+.ph-tall{aspect-ratio:4/5}
+.ph-wide{aspect-ratio:3/2}
+.ph-thumb{aspect-ratio:16/10;margin-bottom:1.5rem;padding:1rem;gap:.5rem}
+.ph-thumb .ph-hint{display:none}
+.ph-media{aspect-ratio:4/3}
+@media (min-width:640px){
+  .ph-wide{aspect-ratio:21/9}
+}
+
+/* ============ Header ============ */
+.site-header{
+  position:absolute;inset:0 0 auto 0;z-index:10;
+  padding-top:1.4rem;
+}
+.site-header .container{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.wordmark{
+  font-family:var(--font-serif);font-size:1.05rem;font-weight:500;
+  text-decoration:none;letter-spacing:.01em;
+}
+.wordmark span{color:var(--accent)}
+.header-tel{
+  display:inline-flex;align-items:center;gap:.5rem;
+  min-height:2.75rem;padding:.4rem .2rem;
+  font-size:.9rem;font-weight:500;text-decoration:none;
+  color:var(--ink);
+  font-variant-numeric:tabular-nums;
+  border-bottom:1px solid transparent;
+  transition:color var(--t-fast) var(--ease);
+}
+.header-tel:hover{color:var(--accent)}
+.header-tel svg{color:var(--accent)}
+
+/* ============ Hero ============ */
+.hero{
+  padding-top:clamp(6.5rem, 12vw, 10rem);
+  padding-bottom:var(--space-section);
+}
+.hero-grid{display:grid;gap:3.5rem;align-items:center}
+.hero .eyebrow{margin-bottom:1.6rem}
+.hero h1{margin-bottom:1.5rem}
+.hero .lead{margin-bottom:2.25rem}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:1.5rem}
+.hero-note{
+  font-size:.85rem;color:var(--muted);
+  padding-left:1rem;border-left:2px solid var(--tint);
+}
+
+/* Hero figure — abstrakcyjny kadr architektoniczny */
+.hero-figure{position:relative}
+.hero-frame{
+  border:1px solid var(--line);
+  background:var(--surface);
+  padding:clamp(.9rem, 2vw, 1.4rem);
+}
+.hero-frame svg{width:100%;height:auto}
+.hero-card{
+  position:absolute;
+  left:clamp(-.5rem, -1vw, -1.25rem);
+  bottom:clamp(1.5rem, 4vw, 3rem);
+  width:min(58%, 15rem);
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:1rem 1.1rem;
+  box-shadow:0 18px 40px -24px rgba(23,26,24,.28);
+}
+.hero-card-label{
+  font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:.65rem;
+}
+.hero-card-row{display:flex;align-items:center;gap:.55rem;padding:.32rem 0}
+.hero-card-row + .hero-card-row{border-top:1px solid #EFECE4}
+.hero-card-dot{width:.45rem;height:.45rem;border-radius:50%;background:var(--tint);flex:none}
+.hero-card-row.is-active .hero-card-dot{background:var(--accent)}
+.hero-card-row span{font-size:.78rem;color:var(--muted)}
+.hero-card-row.is-active span{color:var(--ink);font-weight:500}
+
+/* ============ Sections ============ */
+.section{padding-block:var(--space-section)}
+.section-alt{background:var(--surface);border-block:1px solid var(--line)}
+
+/* ---- Cztery pytania ---- */
+.points{
+  display:grid;gap:2.75rem;
+  margin-top:clamp(3rem, 5vw, 4.5rem);
+}
+.point{max-width:30em}
+.point-num{
+  font-family:var(--font-serif);font-size:1rem;font-style:italic;
+  color:var(--accent);
+  display:block;margin-bottom:.9rem;
+  font-variant-numeric:tabular-nums;
+}
+.point h3{font-size:1.1rem;font-weight:600;margin-bottom:.55rem;letter-spacing:-0.01em}
+.point p{color:var(--muted);font-size:.95rem}
+.bridge{
+  margin-top:clamp(3.5rem, 5vw, 5rem);
+  padding-top:2.25rem;
+  border-top:1px solid var(--line);
+  font-family:var(--font-serif);font-style:italic;
+  font-size:clamp(1.15rem, 1.4vw + .8rem, 1.45rem);
+  line-height:1.5;color:var(--ink);
+  max-width:36em;
+}
+
+/* ---- Pakiety ---- */
+.packages{
+  display:grid;gap:1.4rem;
+  margin-top:clamp(3rem, 5vw, 4.75rem);
+}
+.package{
+  display:flex;flex-direction:column;
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:clamp(1.75rem, 3vw, 2.5rem);
+  transition:border-color var(--t-med) var(--ease),background-color var(--t-med) var(--ease),box-shadow var(--t-med) var(--ease);
+}
+.package:hover{border-color:#B9B4A6;box-shadow:0 22px 44px -32px rgba(23,26,24,.25)}
+.package-label{
+  font-size:.7rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:1.5rem;
+}
+.package h3{
+  font-family:var(--font-serif);font-weight:500;
+  font-size:clamp(1.45rem, 1.5vw + 1rem, 1.8rem);
+  letter-spacing:-0.01em;margin-bottom:.4rem;
+}
+.package-price{
+  font-size:clamp(1.6rem, 1.6vw + 1.1rem, 2.1rem);
+  font-weight:600;letter-spacing:-0.02em;
+  font-variant-numeric:tabular-nums;
+  margin-bottom:1.4rem;
+}
+.package-price small{font-size:.55em;font-weight:500;color:var(--muted);letter-spacing:0}
+.package-desc{font-size:.93rem;color:var(--muted);margin-bottom:1.75rem}
+.package-desc strong{color:var(--ink);font-weight:500}
+.package ul{list-style:none;display:grid;gap:.7rem;margin-bottom:2rem}
+.package li{
+  display:flex;gap:.7rem;align-items:flex-start;
+  font-size:.9rem;line-height:1.5;
+}
+.package li svg{flex:none;margin-top:.22rem;color:var(--accent)}
+.package-quote{
+  margin-top:auto;
+  font-family:var(--font-serif);font-style:italic;
+  font-size:1.02rem;line-height:1.55;
+  padding:1.25rem 0;margin-bottom:1.5rem;
+  border-top:1px solid var(--line);
+  color:var(--ink);
+}
+.package .btn{width:100%}
+
+/* wariant premium */
+.package-featured{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:var(--accent-ink);
+}
+.package-featured:hover{border-color:var(--accent);box-shadow:0 28px 56px -30px rgba(27,58,47,.55)}
+.package-featured .package-label{color:#A9C3B6}
+.package-featured .package-price small,
+.package-featured .package-desc,
+.package-featured .point p{color:#C4D4CB}
+.package-featured .package-desc strong{color:var(--accent-ink)}
+.package-featured li svg{color:#8FB8A3}
+.package-featured .package-quote{border-top-color:rgba(241,239,232,.22);color:var(--accent-ink)}
+
+.packages-note{
+  margin-top:1.6rem;font-size:.82rem;color:var(--muted);
+}
+
+/* ---- Tabela porównawcza ---- */
+.compare{margin-top:clamp(4rem, 6vw, 6rem)}
+.compare-title{
+  font-family:var(--font-serif);font-weight:500;font-size:1.35rem;
+  margin-bottom:.5rem;letter-spacing:-0.01em;
+}
+.compare-hint{font-size:.82rem;color:var(--muted);margin-bottom:1.5rem}
+.compare-scroll{
+  overflow-x:auto;
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  background:var(--surface);
+  -webkit-overflow-scrolling:touch;
+}
+.compare table{
+  width:100%;min-width:41rem;
+  border-collapse:collapse;
+  font-size:.88rem;
+}
+.compare th,.compare td{
+  padding:.85rem 1.1rem;
+  border-bottom:1px solid #ECE9E0;
+  text-align:center;vertical-align:middle;
+}
+.compare tr:last-child th,.compare tr:last-child td{border-bottom:none}
+.compare thead th{
+  padding-block:1.1rem;
+  font-weight:600;font-size:.82rem;line-height:1.4;
+  border-bottom:1px solid var(--line);
+}
+.compare thead .th-price{
+  display:block;font-weight:500;color:var(--muted);
+  font-variant-numeric:tabular-nums;font-size:.78rem;margin-top:.15rem;
+}
+.compare tbody th{
+  text-align:left;font-weight:400;color:var(--ink);
+  min-width:16rem;line-height:1.45;
+}
+.compare .col-featured{
+  background:#EDF2EE;
+  border-left:1px solid var(--line);
+}
+.compare thead .col-featured{color:var(--accent)}
+.compare thead .col-featured .th-price{color:var(--accent);font-weight:600}
+.compare td svg{margin-inline:auto}
+.compare .yes svg{color:var(--accent)}
+.compare .no{color:#B8B3A6}
+
+/* ---- Rozwój ---- */
+.growth{display:grid;gap:0;margin-top:clamp(3rem, 5vw, 4.5rem)}
+.growth-row{
+  display:grid;gap:1.5rem;
+  padding-block:clamp(2.25rem, 4vw, 3.5rem);
+  border-top:1px solid var(--line);
+}
+.growth-row:last-child{border-bottom:1px solid var(--line)}
+.growth-num{
+  font-family:var(--font-serif);font-style:italic;font-size:1.05rem;
+  color:var(--accent);font-variant-numeric:tabular-nums;
+}
+.growth-main h3{
+  font-family:var(--font-serif);font-weight:500;
+  font-size:clamp(1.3rem, 1.4vw + .9rem, 1.65rem);
+  letter-spacing:-0.01em;margin-bottom:.7rem;
+}
+.growth-main > p{color:var(--muted);font-size:.95rem;max-width:36em}
+.growth-list{list-style:none;display:grid;gap:.65rem;align-content:start}
+.growth-list li{
+  display:flex;gap:.65rem;align-items:flex-start;
+  font-size:.88rem;line-height:1.5;color:var(--ink);
+}
+.growth-list li::before{
+  content:"";flex:none;
+  width:.4rem;height:.4rem;border-radius:50%;
+  background:var(--tint);border:1px solid var(--accent);
+  margin-top:.42rem;
+}
+.growth-note{margin-top:1.75rem;font-size:.82rem;color:var(--muted);max-width:40em}
+
+/* ---- Kontakt ---- */
+.contact{
+  background:var(--accent);color:var(--accent-ink);
+}
+.contact .eyebrow{color:#A9C3B6}
+.contact .eyebrow::before{background:#A9C3B6}
+.contact h2{margin-bottom:1.2rem}
+.contact .lead{color:#C4D4CB}
+.contact-inner{
+  display:grid;gap:3rem;align-items:center;
+}
+.contact-box{
+  background:rgba(241,239,232,.05);
+  border:1px solid rgba(241,239,232,.2);
+  border-radius:var(--radius);
+  padding:clamp(1.75rem, 3.5vw, 2.75rem);
+  text-align:center;
+}
+.contact-box-label{
+  font-size:.72rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  color:#A9C3B6;margin-bottom:1.25rem;
+}
+.contact-selected{
+  font-size:.85rem;color:#C4D4CB;margin-bottom:1rem;
+  font-style:italic;font-family:var(--font-serif);
+}
+.contact-phone{
+  display:block;
+  font-family:var(--font-serif);font-weight:500;
+  font-size:clamp(1.9rem, 4.5vw, 2.9rem);
+  letter-spacing:.01em;
+  font-variant-numeric:tabular-nums;
+  color:var(--accent-ink);text-decoration:none;
+  margin-bottom:1.75rem;
+  transition:color var(--t-fast) var(--ease);
+}
+.contact-phone:hover{color:#fff}
+.contact-box .btn{width:100%;max-width:22rem;margin-inline:auto}
+.contact-caption{
+  margin-top:1.5rem;font-size:.85rem;line-height:1.6;color:#A9C3B6;
+}
+
+/* ---- Footer ---- */
+.site-footer{
+  padding-block:2rem;
+  font-size:.8rem;color:var(--muted);
+}
+.site-footer .container{
+  display:flex;flex-wrap:wrap;gap:.75rem 2rem;
+  justify-content:space-between;align-items:center;
+}
+.site-footer a{color:inherit;text-decoration:none;font-variant-numeric:tabular-nums}
+.site-footer a:hover{color:var(--ink)}
+
+/* ============ Reveal animations ============ */
+.js .reveal{
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity 640ms var(--ease),transform 640ms var(--ease);
+  transition-delay:var(--reveal-delay,0ms);
+}
+.js .reveal.is-visible{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  .js .reveal{opacity:1;transform:none}
+}
+
+/* ============ Breakpoints (mobile-first) ============ */
+@media (min-width:640px){
+  .points{grid-template-columns:repeat(2, 1fr);gap:3rem 2.5rem}
+}
+@media (min-width:900px){
+  .hero-grid{grid-template-columns:1.05fr .9fr;gap:4.5rem}
+  .packages{grid-template-columns:repeat(3, 1fr);align-items:stretch}
+  .package-featured{
+    transform:translateY(-1.75rem);
+    padding-block:calc(clamp(1.75rem, 3vw, 2.5rem) + 1.75rem);
+  }
+  .growth-row{grid-template-columns:4rem 1.2fr 1fr;gap:2.5rem}
+  .contact-inner{grid-template-columns:1.1fr .9fr;gap:5rem}
+  .contact-box{text-align:left}
+  .contact-box .btn{margin-inline:0}
+}
+@media (min-width:1100px){
+  .points{grid-template-columns:repeat(4, 1fr)}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a class="wordmark" href="#top">Cyfrowy start<span>.</span></a>
+    <a class="header-tel" href="tel:+48501747490" aria-label="Zadzwoń pod numer +48 501 747 490">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +48 501 747 490
+    </a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow reveal">Propozycja cyfrowego startu marki deweloperskiej</p>
+        <h1 class="reveal" style="--reveal-delay:60ms">Strona, która rośnie razem z&nbsp;marką — od wiarygodnej obecności do realnego wsparcia sprzedaży.</h1>
+        <p class="lead reveal" style="--reveal-delay:120ms">Nowa marka potrzebuje miejsca, które od początku budzi zaufanie. Może ono jedynie dobrze ją przedstawiać albo aktywnie pomagać klientom znaleźć mieszkanie i&nbsp;rozpocząć rozmowę.</p>
+        <div class="hero-cta reveal" style="--reveal-delay:180ms">
+          <a class="btn btn-primary" href="#oferta">Sprawdź ofertę</a>
+          <a class="btn btn-ghost" href="#kluczowe">Zobacz, co jest kluczowe</a>
+        </div>
+        <p class="hero-note reveal" style="--reveal-delay:240ms">Trzy warianty. Trzy różne role strony w&nbsp;rozwijającym się biznesie.</p>
+      </div>
+
+      <figure class="hero-figure reveal" style="--reveal-delay:200ms" aria-hidden="true">
+        <div class="hero-frame">
+          <svg viewBox="0 0 520 560" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Abstrakcyjny rysunek elewacji współczesnego budynku">
+            <rect width="520" height="560" fill="#F0EEE7"/>
+            <!-- światło na elewacji -->
+            <path d="M0 560 L520 90 L520 560 Z" fill="#E7EBE6"/>
+            <path d="M120 560 L520 240 L520 560 Z" fill="#DDE6E0" opacity=".7"/>
+            <!-- bryła główna -->
+            <rect x="88" y="120" width="212" height="440" fill="#FCFBF8" stroke="#D8D4CA"/>
+            <rect x="300" y="40" width="140" height="520" fill="#F5F3EE" stroke="#D8D4CA"/>
+            <!-- podziały pięter -->
+            <g stroke="#D8D4CA" stroke-width="1">
+              <line x1="88" y1="190" x2="300" y2="190"/><line x1="88" y1="260" x2="300" y2="260"/>
+              <line x1="88" y1="330" x2="300" y2="330"/><line x1="88" y1="400" x2="300" y2="400"/>
+              <line x1="88" y1="470" x2="300" y2="470"/>
+              <line x1="300" y1="120" x2="440" y2="120"/><line x1="300" y1="200" x2="440" y2="200"/>
+              <line x1="300" y1="280" x2="440" y2="280"/><line x1="300" y1="360" x2="440" y2="360"/>
+              <line x1="300" y1="440" x2="440" y2="440"/>
+            </g>
+            <!-- pionowe podziały okien -->
+            <g stroke="#E4E1D7" stroke-width="1">
+              <line x1="141" y1="120" x2="141" y2="560"/><line x1="194" y1="120" x2="194" y2="560"/>
+              <line x1="247" y1="120" x2="247" y2="560"/>
+              <line x1="347" y1="40" x2="347" y2="560"/><line x1="394" y1="40" x2="394" y2="560"/>
+            </g>
+            <!-- akcenty zieleni -->
+            <rect x="300" y="280" width="47" height="80" fill="#244C3D" opacity=".9"/>
+            <rect x="194" y="330" width="53" height="70" fill="#DDE6E0"/>
+            <!-- linia horyzontu -->
+            <line x1="0" y1="560" x2="520" y2="560" stroke="#D8D4CA"/>
+          </svg>
+        </div>
+        <figcaption class="hero-card">
+          <p class="hero-card-label">Rola strony</p>
+          <div class="hero-card-row"><span class="hero-card-dot"></span><span>Obecność marki</span></div>
+          <div class="hero-card-row"><span class="hero-card-dot"></span><span>Portfolio inwestycji</span></div>
+          <div class="hero-card-row is-active"><span class="hero-card-dot"></span><span>Wsparcie sprzedaży</span></div>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ CO JEST KLUCZOWE ============ -->
+  <section class="section section-alt" id="kluczowe">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow reveal">Co jest dziś najważniejsze</p>
+        <h2 class="reveal" style="--reveal-delay:60ms">Klient nie szuka kolejnej strony. Szuka pewności, że trafił we&nbsp;właściwe miejsce.</h2>
+        <p class="lead reveal" style="--reveal-delay:120ms">Zanim napisze lub zadzwoni, chce szybko zrozumieć cztery rzeczy. Dobra strona odpowiada na nie bez zmuszania go do szukania.</p>
+      </div>
+
+      <div class="points">
+        <div class="point reveal">
+          <span class="point-num">01</span>
+          <h3>Kim jesteście?</h3>
+          <p>Nowa marka musi wyglądać jak przemyślany i&nbsp;odpowiedzialny partner, nie jak projekt dopiero czekający na start.</p>
+        </div>
+        <div class="point reveal" style="--reveal-delay:80ms">
+          <span class="point-num">02</span>
+          <h3>Czy macie coś dla mnie?</h3>
+          <p>Klient chce szybko przejść od ogólnej obietnicy do inwestycji i&nbsp;mieszkań pasujących do jego sytuacji.</p>
+        </div>
+        <div class="point reveal" style="--reveal-delay:160ms">
+          <span class="point-num">03</span>
+          <h3>Ile to kosztuje i&nbsp;czy jest dostępne?</h3>
+          <p>Jasna, aktualna informacja zmniejsza niepewność i&nbsp;buduje zaufanie przed pierwszą rozmową.</p>
+        </div>
+        <div class="point reveal" style="--reveal-delay:240ms">
+          <span class="point-num">04</span>
+          <h3>Co mogę zrobić dalej?</h3>
+          <p>Kontakt powinien być naturalnym kolejnym krokiem i&nbsp;od razu dotyczyć konkretnej inwestycji lub mieszkania.</p>
+        </div>
+      </div>
+
+      <p class="bridge reveal">Wybór wariantu nie dotyczy liczby ekranów. Dotyczy tego, ile z&nbsp;tych pytań strona ma rozwiązywać za firmę.</p>
+    </div>
+  </section>
+
+  <!-- ============ OFERTA ============ -->
+  <section class="section" id="oferta">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow reveal">Trzy warianty współpracy</p>
+        <h2 class="reveal" style="--reveal-delay:60ms">Wybierz rolę, jaką strona ma pełnić od pierwszego dnia.</h2>
+        <p class="lead reveal" style="--reveal-delay:120ms">Każdy wariant buduje profesjonalny obraz nowej marki. Różnica polega na tym, jak daleko strona prowadzi przyszłego klienta — od poznania firmy, przez wybór inwestycji, aż po znalezienie konkretnego mieszkania. Wyższy pakiet zawsze obejmuje pełną wartość wcześniejszych wariantów.</p>
+      </div>
+
+      <div class="packages">
+
+        <!-- Pakiet 1 -->
+        <article class="package reveal">
+          <p class="package-label">01 / Obecność</p>
+          <h3>Wiarygodny start</h3>
+          <p class="package-price">7 500 zł <small>netto</small></p>
+          <p class="package-desc">Nowa marka otrzymuje miejsce, które jasno pokazuje, kim jest, co zamierza budować i&nbsp;dlaczego warto ją zapamiętać.</p>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Profesjonalny pierwszy obraz marki</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Jasne przedstawienie jej charakteru i&nbsp;kierunku</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Najważniejsze informacje dostępne bez szukania</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Pierwsza inwestycja pokazana w&nbsp;uporządkowany sposób</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Prosta droga do rozmowy z&nbsp;firmą</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Wygodne poznanie marki również na telefonie</li>
+          </ul>
+          <p class="package-quote">Gdy ktoś sprawdzi nazwę dewelopera, zobaczy prawdziwą, uporządkowaną i&nbsp;gotową do działania markę.</p>
+          <a class="btn btn-ghost" href="#kontakt" data-pakiet="Wiarygodny start — 7 500 zł">Wybieram dobry start</a>
+        </article>
+
+        <!-- Pakiet 2 -->
+        <article class="package reveal" style="--reveal-delay:100ms">
+          <p class="package-label">02 / Portfolio</p>
+          <h3>Marka i&nbsp;inwestycje</h3>
+          <p class="package-price">12 000 zł <small>netto</small></p>
+          <p class="package-desc">Obejmuje wszystko z&nbsp;wariantu <strong>Wiarygodny start</strong>. Dodatkowo strona staje się uporządkowanym miejscem, w&nbsp;którym marka prezentuje swoje inwestycje i&nbsp;zamienia ogólne zainteresowanie w&nbsp;pierwsze konkretne zapytania.</p>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Każda inwestycja otrzymuje własną, dopracowaną opowieść</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Dostępne, planowane i&nbsp;zakończone projekty tworzą spójne portfolio</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Lokalizacja, charakter i&nbsp;najważniejsze atuty są łatwe do zrozumienia</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Klient rozpoczyna kontakt przy inwestycji, która go zainteresowała</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Kolejne projekty można naturalnie dopisywać do rosnącej marki</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Firma buduje nie tylko obecność, ale również historię i&nbsp;skalę działania</li>
+          </ul>
+          <p class="package-quote">Klient poznaje ofertę i&nbsp;wie, o&nbsp;którą inwestycję chce zapytać.</p>
+          <a class="btn btn-ghost" href="#kontakt" data-pakiet="Marka i inwestycje — 12 000 zł">Buduję portfolio marki</a>
+        </article>
+
+        <!-- Pakiet 3 -->
+        <article class="package package-featured reveal" style="--reveal-delay:200ms">
+          <p class="package-label">03 / Sprzedaż</p>
+          <h3>Cyfrowe biuro sprzedaży</h3>
+          <p class="package-price">15 000 zł <small>netto</small></p>
+          <p class="package-desc">Obejmuje wszystko z&nbsp;wariantów <strong>Wiarygodny start</strong> oraz <strong>Marka i&nbsp;inwestycje</strong>. Dodatkowo strona aktywnie pomaga wybrać mieszkanie, rozwiewa najważniejsze wątpliwości i&nbsp;przekazuje do handlowca osobę zainteresowaną konkretną ofertą.</p>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Intuicyjne znajdowanie mieszkań dopasowanych do potrzeb</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Łatwe porównanie ceny, metrażu, układu i&nbsp;dostępności</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Czytelna karta mieszkania pomagająca podjąć decyzję</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Zapytanie od razu powiązane z&nbsp;wybranym lokalem</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Aktualna oferta budująca zaufanie na każdym etapie</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Krótsza droga od pierwszej wizyty do konkretnej rozmowy</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>Mocna podstawa pod przyszłe narzędzia sprzedażowe</li>
+          </ul>
+          <p class="package-quote">Klient nie tylko ogląda inwestycję. Znajduje lokal dla siebie i&nbsp;wykonuje konkretny krok w&nbsp;stronę zakupu.</p>
+          <a class="btn btn-light" href="#kontakt" data-pakiet="Cyfrowe biuro sprzedaży — 15 000 zł">Wybieram wersję sprzedażową</a>
+        </article>
+      </div>
+
+      <p class="packages-note reveal">Podane kwoty są cenami netto. Wybór pakietu rozpoczyna rozmowę — nie jest zamówieniem ani zobowiązaniem.</p>
+
+      <!-- Tabela porównawcza -->
+      <div class="compare reveal">
+        <h3 class="compare-title">Co dokładnie zyskuje marka w&nbsp;każdym wariancie</h3>
+        <p class="compare-hint">Na telefonie tabelę można przesuwać w&nbsp;bok wewnątrz ramki.</p>
+        <div class="compare-scroll" role="region" aria-label="Porównanie trzech wariantów oferty" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col"><span class="sr-only">Rezultat</span></th>
+                <th scope="col">Wiarygodny start<span class="th-price">7 500 zł</span></th>
+                <th scope="col">Marka i&nbsp;inwestycje<span class="th-price">12 000 zł</span></th>
+                <th scope="col" class="col-featured">Cyfrowe biuro sprzedaży<span class="th-price">15 000 zł</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Profesjonalny obraz nowej marki</th>
+                <td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+                <td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+                <td class="yes col-featured"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Uporządkowana prezentacja pierwszej inwestycji</th>
+                <td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+                <td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+                <td class="yes col-featured"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Prosta droga do kontaktu z&nbsp;firmą</th>
+                <td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+                <td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+                <td class="yes col-featured"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Spójne portfolio wielu inwestycji</th>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+                <td class="yes col-featured"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Osobna, dopracowana prezentacja każdego projektu</th>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+                <td class="yes col-featured"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Zapytanie powiązane z&nbsp;wybraną inwestycją</th>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="yes"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+                <td class="yes col-featured"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Intuicyjne znajdowanie mieszkań według potrzeb</th>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="yes col-featured"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Łatwe porównanie najważniejszych informacji</th>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="yes col-featured"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Pełna karta mieszkania z&nbsp;ceną i&nbsp;dostępnością</th>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="yes col-featured"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Zapytanie od razu powiązane z&nbsp;wybranym lokalem</th>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="yes col-featured"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Podstawa pod AI, 3D i&nbsp;kolejne narzędzia sprzedażowe</th>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="no">—<span class="sr-only">Nie obejmuje</span></td>
+                <td class="yes col-featured"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span class="sr-only">Tak</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROZWÓJ ============ -->
+  <section class="section section-alt" id="rozwoj">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow reveal">Możliwości dalszego rozwoju</p>
+        <h2 class="reveal" style="--reveal-delay:60ms">Kiedy strona zaczyna sprzedawać, może przejąć kolejne zadania.</h2>
+        <p class="lead reveal" style="--reveal-delay:120ms">Poniższe rozwiązania nie są kolejnymi dodatkami do strony. To osobne kierunki rozwoju, które mogą poprawić doświadczenie kupującego i&nbsp;uporządkować pracę zespołu.</p>
+      </div>
+
+      <div class="growth">
+        <div class="growth-row reveal">
+          <span class="growth-num">I.</span>
+          <div class="growth-main">
+            <h3>Doradca, który pomaga znaleźć właściwe mieszkanie</h3>
+            <p>Klient opowiada o&nbsp;budżecie, stylu życia, dojazdach i&nbsp;tym, czego naprawdę potrzebuje. Doradca pomaga zawęzić wybór, wyjaśnia różnice między lokalami i&nbsp;przekazuje handlowcowi kontekst rozmowy.</p>
+          </div>
+          <ul class="growth-list">
+            <li>Pomoc dostępna również poza godzinami biura</li>
+            <li>Krótsza lista lepiej dopasowanych mieszkań</li>
+            <li>Spokojne wyjaśnienie różnic bez przeglądania dziesiątek kart</li>
+            <li>Handlowiec rozpoczyna rozmowę ze znajomością potrzeb klienta</li>
+          </ul>
+        </div>
+
+        <div class="growth-row reveal">
+          <span class="growth-num">II.</span>
+          <div class="growth-main">
+            <h3>Zobacz przestrzeń, zanim powstanie</h3>
+            <p>Wirtualny spacer, rzut 3D lub interaktywna bryła pomagają zrozumieć układ, światło i&nbsp;położenie mieszkania bez wizyty na budowie.</p>
+          </div>
+          <ul class="growth-list">
+            <li>Łatwiejsze wyobrażenie sobie codziennego życia w&nbsp;mieszkaniu</li>
+            <li>Możliwość poznania inwestycji z&nbsp;dowolnego miejsca</li>
+            <li>Mocniejsza prezentacja lokali sprzedawanych przed zakończeniem budowy</li>
+            <li>Materiały przydatne również handlowcom i&nbsp;kampaniom reklamowym</li>
+          </ul>
+        </div>
+
+        <div class="growth-row reveal">
+          <span class="growth-num">III.</span>
+          <div class="growth-main">
+            <h3>Jedno miejsce zamiast wielu rozproszonych narzędzi</h3>
+            <p>Oferta, ceny, dostępność i&nbsp;zapytania mogą być porządkowane w&nbsp;jednym miejscu. Zmiana wykonana raz trafia tam, gdzie jest potrzebna, a&nbsp;zespół nie musi przenosić informacji ręcznie.</p>
+          </div>
+          <ul class="growth-list">
+            <li>Mniej powtarzalnej pracy</li>
+            <li>Mniejsze ryzyko różnych cen lub statusów w&nbsp;kilku miejscach</li>
+            <li>Zapytania trafiają do właściwej osoby z&nbsp;pełnym kontekstem</li>
+            <li>Mniej chaosu wraz ze wzrostem liczby lokali i&nbsp;projektów</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="growth-note reveal">Każdy z&nbsp;tych kierunków wymaga osobnego ustalenia zakresu, dlatego nie podajemy tu cen. Najlepiej porozmawiać o&nbsp;nich, gdy znany będzie etap inwestycji i&nbsp;dostępne materiały.</p>
+    </div>
+  </section>
+
+  <!-- ============ KONTAKT ============ -->
+  <section class="section contact" id="kontakt">
+    <div class="container contact-inner">
+      <div>
+        <p class="eyebrow reveal">Kontakt</p>
+        <h2 class="reveal" style="--reveal-delay:60ms">Ustalmy, jaką rolę strona ma pełnić w&nbsp;starcie nowej marki.</h2>
+        <p class="lead reveal" style="--reveal-delay:120ms">Wybór pakietu jest punktem wyjścia. Podczas krótkiej rozmowy potwierdzimy etap inwestycji, dostępne materiały i&nbsp;to, jak strona powinna rozwijać się razem z&nbsp;firmą.</p>
+      </div>
+      <div class="contact-box reveal" style="--reveal-delay:180ms">
+        <p class="contact-box-label">Zadzwoń i&nbsp;opowiedz krótko o&nbsp;planowanej marce</p>
+        <p class="contact-selected" id="wybrany-pakiet" hidden></p>
+        <a class="contact-phone" href="tel:+48501747490">+48 501 747 490</a>
+        <a class="btn btn-light" href="tel:+48501747490" aria-label="Zadzwoń pod numer +48 501 747 490">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Zadzwoń: +48 501 747 490
+        </a>
+        <p class="contact-caption">Krótka rozmowa wystarczy, aby ustalić właściwy wariant i&nbsp;następny krok. Bez technicznego żargonu i&nbsp;bez zobowiązań.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>Propozycja cyfrowego startu marki deweloperskiej</p>
+    <a href="tel:+48501747490">+48 501 747 490</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+
+  // Subtelne pojawianie się treści przy przewijaniu
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items = document.querySelectorAll('.reveal');
+  if(!reduced && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+    items.forEach(function(el){ io.observe(el); });
+  }else{
+    items.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  // Wybrany pakiet widoczny przy kontakcie
+  var selected = document.getElementById('wybrany-pakiet');
+  document.querySelectorAll('[data-pakiet]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      selected.textContent = 'Punkt wyjścia do rozmowy: ' + btn.getAttribute('data-pakiet');
+      selected.hidden = false;
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

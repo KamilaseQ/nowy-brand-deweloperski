@@ -371,6 +371,37 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
 .compare .no{color:var(--dash);font-size:1.15rem;font-weight:600;line-height:1}
 .compare .no > span[aria-hidden="true"]{font-size:0}
 .compare .no > span[aria-hidden="true"]::before{content:"—";font-size:1.15rem}
+.th-mini{display:none}
+
+/* Tabela mieszcząca się na telefonie bez przewijania w bok */
+@media (max-width:719px){
+  .compare-scroll{overflow-x:hidden}
+  .compare table{min-width:0;width:100%;table-layout:fixed;font-size:.8rem}
+  .compare thead th:not(:first-child){width:3rem}
+  .compare th,.compare td{padding:.55rem .2rem}
+  .compare tbody th{
+    min-width:0;padding-left:.15rem;padding-right:.5rem;
+    font-size:.77rem;line-height:1.3;
+    overflow-wrap:break-word;word-break:break-word;hyphens:auto;
+  }
+  .compare thead th{padding-block:.7rem;font-size:.75rem}
+  .compare thead .th-name{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+  }
+  .compare thead .th-price{display:none}
+  .th-mini{
+    display:block;font-weight:700;
+    font-variant-numeric:tabular-nums;line-height:1.05;
+  }
+  .th-mini small{
+    display:block;font-weight:500;font-size:.62em;
+    color:var(--muted);letter-spacing:.01em;margin-top:.12rem;white-space:nowrap;
+  }
+  .compare thead .col-featured .th-mini small{color:var(--accent)}
+  .compare td svg{width:14px;height:14px}
+  .compare .no > span[aria-hidden="true"]::before{font-size:1rem}
+}
 
 /* ---- Mapa (w cenie pakietu 3) ---- */
 .mapsec-inner{
@@ -749,15 +780,15 @@ h2{font-size:clamp(1.65rem, 2.6vw + 0.9rem, 2.75rem)}
       <!-- Tabela porównawcza -->
       <div class="compare reveal">
         <h3 class="compare-title">Co dokładnie zyskuje marka w&nbsp;każdym wariancie</h3>
-        <p class="compare-hint">Na telefonie tabelę można przesuwać w&nbsp;bok wewnątrz ramki.</p>
+        <p class="compare-hint">Każdy kolejny wariant zawiera wszystko z&nbsp;poprzedniego.</p>
         <div class="compare-scroll" role="region" aria-label="Porównanie trzech wariantów oferty" tabindex="0">
           <table>
             <thead>
               <tr>
                 <th scope="col"><span class="sr-only">Rezultat</span></th>
-                <th scope="col">Wiarygodny start<span class="th-price">7 500 zł</span></th>
-                <th scope="col">Marka i&nbsp;inwestycje<span class="th-price">12 000 zł</span></th>
-                <th scope="col" class="col-featured">Cyfrowe biuro sprzedaży<span class="th-price">15 000 zł</span></th>
+                <th scope="col"><span class="th-name">Wiarygodny start</span><span class="th-price">7 500 zł</span><span class="th-mini" aria-hidden="true">7,5<small>tys. zł</small></span></th>
+                <th scope="col"><span class="th-name">Marka i&nbsp;inwestycje</span><span class="th-price">12 000 zł</span><span class="th-mini" aria-hidden="true">12<small>tys. zł</small></span></th>
+                <th scope="col" class="col-featured"><span class="th-name">Cyfrowe biuro sprzedaży</span><span class="th-price">15 000 zł</span><span class="th-mini" aria-hidden="true">15<small>tys. zł</small></span></th>
               </tr>
             </thead>
             <tbody>
